@@ -12,8 +12,8 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
 
 
-@login_required
-@superuseronly
+# @login_required
+# @superuseronly
 def homepage(request):
     return render(request, 'index.html')
 
