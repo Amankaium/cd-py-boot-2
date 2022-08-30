@@ -1,4 +1,6 @@
 from django.test import TestCase, Client
+from django.contrib.auth.models import User
+from .models import Product
 
 
 class TestHomepage(TestCase):
@@ -54,3 +56,21 @@ class TestProductCreate(TestCase):
         # нет обязательных полей
         # ненужные поля
         # несколько одинаковых полей
+
+    def test_create_product_with_user(self):
+        user = User(
+            username="test1",
+            email="test1@mail.com",
+            password="test1",
+        )
+        user.save()
+        print(f"\n{user}\n")
+        p = Product(
+            name="яблоко",
+            price=100,
+            user=user
+        )
+        p.save()
+
+        assert user.id == p.user.id
+        print(f"\nour test done\n")

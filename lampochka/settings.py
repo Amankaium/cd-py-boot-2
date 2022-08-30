@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-95+_(cw$*9^id4tv47o2x$7_)f31%+&a$n91gtq*n4g#3uv9se
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'habrdb',
         'USER': 'habrpguser',
         'PASSWORD': 'pgpwd4habr',
-        'HOST': 'db',
+        'HOST': '172.19.0.2',
         'PORT': '5432',
     }
 }
