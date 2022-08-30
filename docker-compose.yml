@@ -1,8 +1,10 @@
 version: "3.9"
 
 services:
- postgres:
+ db:
    image: postgres:13.3
+   volumes:
+     - postgres_data:/var/lib/postgresql/data/
    environment:
      POSTGRES_DB: "habrdb"
      POSTGRES_USER: "habrpguser"
@@ -17,4 +19,6 @@ services:
    ports:
      - "8000:8000"
    depends_on:
-     - postgres
+     - db
+volumes:
+  postgres_data:
