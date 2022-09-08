@@ -21,5 +21,8 @@ from core.views import HomeView, ProductViewSet, homepage
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homepage),
-    path('product/', ProductViewSet.as_view({'post': 'create'}))
+    path('product/', ProductViewSet.as_view(
+        {'post': 'create',
+        'get': 'list'})
+     )
 ]
