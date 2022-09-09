@@ -1,0 +1,23 @@
+<!doctype html>
+{% load static %}
+<html>
+    <head>
+        <title>
+            {% block title %}
+                Магазин
+            {% endblock %}
+        </title>
+        <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    </head>
+
+    <body>
+        <nav>
+            <a href="/">Домой</a>
+            <a href="/our-product/">НАШ продукт!</a>
+            <a href="{% url 'contacts' %}">Контакты</a>
+        </nav>
+        {% block content %}
+
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <div>{{ object.name }}</div>
+        {% if object.product_image %}
+            <img height="300px" src="{{ object.product_image.url }}" alt="">
+        {% endif %}
+    </div>
+{% endblock %}
