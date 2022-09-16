@@ -2,8 +2,9 @@ from openpyxl import load_workbook
 
 
 # takes excel file and makes report into, then returns changed file
-def make_report(file_name):
-    excel_file = load_workbook(file_name)
+def make_report(input_file, report_object):
+    print("- - - - start report")
+    excel_file = load_workbook(input_file.path)
     page = excel_file["Лист1"]
 
     # {"Bob":
@@ -47,6 +48,7 @@ def make_report(file_name):
         page[f"{letters[i]}{row_number}"] = date_value
         i += 1
 
+    print("- - - - almost")
     # cells
     for name, date_qty_dict in res.items():
         row_number += 1
@@ -57,6 +59,12 @@ def make_report(file_name):
         for date_value, qty in date_qty_dict.items():
             page[f"{letters[i]}{row_number}"] = qty
             i += 1
+    print("- - - - report is done")
+    output_file_path = input_file.path.replace(".xlsx", "_ready.xlsx")
+    excel_file.save(output_file_path)
+    output_file_name = report_object.input_file.name.replace(".xlsx", "_ready.xlsx")
+    report_object.output_file.name = output_file_name
+    report_object.save()
+    print('all done!')
 
-    excel_file.save("rep2.xlsx")
-    return excel_file
+    # return excel_file
