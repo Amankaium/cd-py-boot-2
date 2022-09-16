@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from core.views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from core.views import *
+from report.views import ReportView
 
 
 urlpatterns = [
@@ -26,6 +27,7 @@ urlpatterns = [
     path('contacts/', ContactsView.as_view(), name="contacts"),
     path("our-product/", ProductGenericView.as_view()),
     path('product/<int:pk>/', ProductDetail.as_view()),
+    path('report/', ReportView.as_view()),
     path('product/', ProductViewSet.as_view(
         {'post': 'create',
         'get': 'list'})
