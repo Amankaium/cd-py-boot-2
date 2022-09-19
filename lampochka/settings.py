@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'corsheaders',
+    'django_celery_results',
 
     'core',
     'report',
@@ -178,3 +179,13 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
+
+
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_CACHE_BACKEND = 'django-cache'
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table',
+    }
+}
